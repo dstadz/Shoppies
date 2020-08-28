@@ -5,10 +5,11 @@ import { searchResultState } from '../Utils/store'
 const Results = () => {
   const [searchResults, setSearchResult] = useRecoilState(searchResultState)
 
+  console.log(searchResults)
   return (
     <div>
       results
-      {searchResults}
+      {/* {searchResults} */}
     </div>
   )
 }

@@ -11,14 +11,13 @@ import Nominations from './Components/Nominations'
 function App() {
   const [data, setData] = useState('')
 
-  useEffect(() => {
-    axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.OMDB_API}`)
-    .then(res => { setData(res.data) })
-    .catch(err => { console.log(err) })
+  // useEffect(() => {
+  //   axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.OMDB_API}`)
+  //   .then(res => { setData(res.data) })
+  //   .catch(err => { console.log(err) })
 
-  }, [])
+  // }, [])
 
-  console.log(data)
   return (
     <div className="App">
       <h1> The Shoppies </h1>
