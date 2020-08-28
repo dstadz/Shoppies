@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRecoilState } from 'recoil'
 import { nominatedState } from '../Utils/store'
+import MovieTab from './MovieTab'
 
 
 
@@ -10,8 +11,8 @@ const Nominations = () => {
 
   return (
     <div>
-      nominations
-      {nominated}
+      <h3> Nominated </h3>
+      <ul> { nominated.map((movie) => <MovieTab props={movie} key={movie.imdbID} /> )} </ul>
     </div>
   )
 }

@@ -11,13 +11,13 @@ import { findAllByTitle } from '@testing-library/react'
 
 export const SearchBar = () => {
   const { register, handleSubmit, errors } = useForm();
-  const [searchTerm, setSearchTerm] = useState('up')
+  const [searchTerm, setSearchTerm] = useRecoilState(searchTermState)
   const [searchResults, setSearchResults] = useRecoilState(searchResultState)
 
 
 
   const onSubmit = ({ Title }) => {
-
+    setSearchTerm(Title)
   //call to get top 10 results
   axios.get(`http://www.omdbapi.com/?s=${Title}&apikey=${process.env.REACT_APP_OMDB_API}`)
     .then(res => { setSearchResults(res.data.Search) })
