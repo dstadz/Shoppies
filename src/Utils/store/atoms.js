@@ -5,6 +5,11 @@ export const nominatedState = atom({
   default: []
 })
 
+export const searchTermState = atom({
+  key: 'searchTermState',
+  default: ''
+})
+
 export const searchResultState = atom({
   key: 'searchResultState',
   default: []
