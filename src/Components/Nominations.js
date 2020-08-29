@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { nominatedState } from '../Utils/store'
 import MovieTab from './MovieTab'
 
 
 
 const Nominations = () => {
-  const [nominated, setNominated] = useRecoilState(nominatedState)
+  const nominated = useRecoilValue(nominatedState)
 
   return (
     <div>

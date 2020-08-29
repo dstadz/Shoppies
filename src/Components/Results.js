@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { searchResultState, searchTermState } from '../Utils/store'
 import MovieTab from './MovieTab'
 
@@ -10,7 +10,7 @@ const Results = () => {
   return (
     <div>
       <h3> Results for "{searchTerm}" </h3>
-      <ul> { searchResults.map((movie) => {
+      <ul> { searchResults && searchResults.map((movie) => {
         return <MovieTab props={{...movie, action:'Nominate'}} key={movie.imdbID}  />
       } )} </ul>
     </div>
