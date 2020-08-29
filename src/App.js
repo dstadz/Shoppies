@@ -1,24 +1,25 @@
 import React from 'react';
 
-import './App.css';
 import SearchBar from './Components/SearchBar'
 import Results from './Components/Results'
 import Nominations from './Components/Nominations'
 
-
+import { AppContainer } from './styles/index'
 
 const App = () => {
 
 
   return (
-    <div className="App">
+    <AppContainer>
       <h1> The Shoppies </h1>
       <SearchBar />
-      <div style={{display:'flex', justifyContent:"space-around", alignItems:'top'}}>
+
+
+      <div>
         <Results />
         <Nominations />
       </div>
-    </div>
+    </AppContainer>
   );
 }
 
