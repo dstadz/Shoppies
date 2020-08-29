@@ -10,7 +10,9 @@ const Results = () => {
   return (
     <div>
       <h3> Results for "{searchTerm}" </h3>
-      <ul> { searchResults.map((movie) => <MovieTab props={movie} key={movie.imdbID} /> )} </ul>
+      <ul> { searchResults.map((movie) => {
+        return <MovieTab props={{...movie, action:'Nominate'}} key={movie.imdbID}  />
+      } )} </ul>
     </div>
   )
 }

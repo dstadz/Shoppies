@@ -12,7 +12,9 @@ const Nominations = () => {
   return (
     <div>
       <h3> Nominated </h3>
-      <ul> { nominated.map((movie) => <MovieTab props={movie} key={movie.imdbID} /> )} </ul>
+      <ul> { nominated.map((movie) => {
+        return <MovieTab props={{...movie, action:'Remove'}} key={movie.imdbID} />
+      } )} </ul>
     </div>
   )
 }

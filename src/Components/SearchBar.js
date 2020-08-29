@@ -27,7 +27,7 @@ export const SearchBar = () => {
 
 
 
-  console.log(errors);
+  // console.log(errors);
   return (
     <div>
 

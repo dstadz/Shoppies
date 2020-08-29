@@ -5,23 +5,28 @@ import { nominatedState } from '../Utils/store'
 import { Tab } from '../styles/'
 
 const MovieTab = ({props}) => {
-  const { Title, Year, imdbID, Type, Poster } = props
+  const { Title, Year, imdbID, Type, Poster, action } = props
   const [nominated, setNominated] = useRecoilState(nominatedState)
-  const [isNominated, setIsNominated] = useState(false)
 
-  const nominate = () => {
-    console.log(imdbID)
-    setNominated(nominated.concat(props))
 
+
+
+  const handleClick = () => {
+    if (action === 'Nominate') setNominated(nominated.concat(props))
+    if (action === 'Remove') {
+      const newList = nominated.filter((movie) => imdbID != movie.imdbID)
+      setNominated(newList)
+    }
+    console.log(nominated)
   }
 
   return (
     <Tab>
-      <p>{Title}</p>
-      <p>{Year}</p>
+      <h5>{Title}</h5>
+      <span>{Year}</span>
       <button
-      onClick={()=> nominate()}
-      >Nominate</button>
+      onClick={()=> handleClick()}
+      >{action}</button>
     </Tab>
   )
 }
