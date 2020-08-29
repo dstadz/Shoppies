@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { nominatedState } from '../Utils/store'
@@ -12,27 +12,32 @@ const MovieTab = ({props}) => {
 
 
   const handleClick = () => {
-    if (action === 'Nominate') {
-      for (let idx of nominated) {
-        if (idx.imdbID ===imdbID) {
-          setIsNominated(true)
-          break
-        }
-      }
-      setNominated(nominated => nominated.concat(props))
+
+    if (action === 'Nominate'
+    && nominated.length < 5
+    && !nominated.some(movie => movie.imdbID === imdbID)) {
+      setNominated(nominated.concat(props))
+      setIsNominated(true)
     }
+
+
     if (action === 'Remove') {
+      setIsNominated(false)
       const newList = nominated.filter((movie) => imdbID !== movie.imdbID)
       setNominated(newList)
     }
     console.log(nominated)
   }
 
+
+
   return (
     <Tab>
       <h5>{Title}</h5>
       <span>{Year}</span>
       <button
+      id={imdbID}
+      disabled={isNominated}
       onClick={()=> handleClick()}
       >{action}</button>
     </Tab>

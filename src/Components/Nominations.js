@@ -1,6 +1,6 @@
 import React from 'react'
-
 import { useRecoilValue } from 'recoil'
+
 import { nominatedState } from '../Utils/store'
 import MovieTab from './MovieTab'
 
