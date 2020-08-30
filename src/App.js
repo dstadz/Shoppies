@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import React from 'react';
+import { useRecoilValue } from 'recoil'
 
-import './App.css';
 import SearchBar from './Components/SearchBar'
 import Results from './Components/Results'
 import Nominations from './Components/Nominations'
+import Banner from './Components/Banner'
+import { nominatedState } from './Utils/store'
 
+import { AppContainer } from './styles/index'
 
+const App = () => {
+  const nominated = useRecoilValue(nominatedState)
 
-function App() {
-  const [data, setData] = useState('')
-
-  useEffect(() => {
-    axios.get(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.OMDB_API}`)
-    .then(res => { setData(res.data) })
-    .catch(err => { console.log(err) })
-
-  }, [])
-
-  console.log(data)
   return (
-    <div className="App">
+    <AppContainer>
       <h1> The Shoppies </h1>
       <SearchBar />
-      <Results />
-      <Nominations />
-    </div>
+      {nominated.length === 5  && <Banner/>}
+      <div>
+        <Results />
+        <Nominations />
+      </div>
+    </AppContainer>
   );
 }
 

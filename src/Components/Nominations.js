@@ -1,18 +1,22 @@
 import React from 'react'
+import { useRecoilValue } from 'recoil'
 
-import { useRecoilState } from 'recoil'
 import { nominatedState } from '../Utils/store'
+import MovieTab from './MovieTab'
+import { Card } from '../styles'
 
 
 
 const Nominations = () => {
-  const [nominated, setNominated] = useRecoilState(nominatedState)
+  const nominated = useRecoilValue(nominatedState)
 
   return (
-    <div>
-      nominations
-      {nominated}
-    </div>
+    <Card>
+      <h3> Nominated </h3>
+      <ul> { nominated.map(movie => { //poulates list with nominated movies
+        return <MovieTab props={{...movie, action:'Remove'}} key={movie.imdbID} />
+      } ) } </ul>
+    </Card>
   )
 }
 

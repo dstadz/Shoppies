@@ -1,34 +1,36 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useEffect } from 'react'
+import axios from 'axios'
 
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { searchTermState, searchResultState } from '../Utils/store'
 
-import { useRecoilState } from 'recoil'
-import { searchTermState } from '../Utils/store'
-
-
+import { Form } from '../styles/'
 
 
 export const SearchBar = () => {
-  const { register, handleSubmit, errors } = useForm();
   const [searchTerm, setSearchTerm] = useRecoilState(searchTermState)
+  const setSearchResults = useSetRecoilState(searchResultState)
 
 
+  //useeffect will fetch data at every key stroke after third char
+  useEffect(() => {
+    axios.get(`http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.REACT_APP_OMDB_API}`)
+    .then(res => { setSearchResults(res.data.Search) })
+    .catch(err => { console.log(err) })
+  },[searchTerm])
 
-  const onSubmit = data => console.log(data);
-  console.log(errors);
+
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form>
       <label> Movie Title </label>
       <input
         type="text"
+        value={searchTerm}
         placeholder="Movie Title"
-        name="Title"
-        ref={register({required: true, maxLength: 80})}
+        onChange={e => setSearchTerm(e.target.value)}
       />
-
-      <input type="submit" />
-    </form>
+    </Form>
   );
 }
 
