@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { searchTermState, searchResultState } from '../Utils/store'
 
-
+import { Form } from '../styles/'
 
 
 export const SearchBar = () => {
@@ -12,7 +12,7 @@ export const SearchBar = () => {
   const setSearchResults = useSetRecoilState(searchResultState)
 
 
-
+  //useeffect will fetch data at every key stroke after third char
   useEffect(() => {
     axios.get(`http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.REACT_APP_OMDB_API}`)
     .then(res => { setSearchResults(res.data.Search) })
@@ -22,7 +22,7 @@ export const SearchBar = () => {
 
 
   return (
-    <form>
+    <Form>
       <label> Movie Title </label>
       <input
         type="text"
@@ -30,7 +30,7 @@ export const SearchBar = () => {
         placeholder="Movie Title"
         onChange={e => setSearchTerm(e.target.value)}
       />
-    </form>
+    </Form>
   );
 }
 

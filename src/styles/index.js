@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
 export const AppContainer = styled.section`
-  background: blue;
   display:flex;
   flex-direction: column;
   text-align: center;
+  margin: auto;
+  width: 75%;
 
   div{
-    background:red;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: stretch;
   }
 `
@@ -19,12 +19,20 @@ export const Card = styled.div`
   flex-direction: column;
   border: solid 1px grey;
   align-self: flex-start;
-  background: green;
 
 `
 
 export const Tab = styled.li`
-  background: green;
   text-align: top;
 
+`
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: green;
+  input {
+
+  }
 `
