@@ -1,10 +1,8 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-
 import { searchResultState, searchTermState } from '../Utils/store'
 import MovieTab from './MovieTab'
 import { Card } from '../styles'
-
 
 const Results = () => {
   const searchResults = useRecoilValue(searchResultState)

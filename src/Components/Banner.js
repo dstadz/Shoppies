@@ -1,10 +1,11 @@
 import React from 'react'
+import { BannerContainer } from '../styles'
 
 const Banner = () => {
   return (
-    <div>
+    <BannerContainer>
     You did it!
-    </div>
+    </BannerContainer>
   )
 }
 

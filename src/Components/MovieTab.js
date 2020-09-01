@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-
 import { nominatedState } from '../Utils/store'
 import { Tab } from '../styles/'
 
@@ -9,13 +8,11 @@ const MovieTab = ({props}) => {
   const [nominated, setNominated] = useRecoilState(nominatedState)
   const [isNominated, setIsNominated] = useState(false)
 
-
-
   const handleClick = () => {
-    //adds Movie to 'Nominated'
-    if (action === 'Nominate' //only deals with MovieTabs in 'Results'
-    && nominated.length < 5 //denies entries after 5th tab
-    && !nominated.some(movie => movie.imdbID === imdbID)) { //denies addition if movie already nominated
+    // adds Movie to 'Nominated'
+    if (action === 'Nominate' // only deals with MovieTabs in 'Results'
+    && nominated.length < 5 // denies entries after 5th tab
+    && !nominated.some(movie => movie.imdbID === imdbID)) { // denies addition if movie already nominated
       setNominated(nominated.concat(props))
       setIsNominated(true)
     }
@@ -28,17 +25,15 @@ const MovieTab = ({props}) => {
     }
   }
 
-  //updates MovieTabs in 'Results" to make them reclickabel whe removed from nominated list
+  // updates MovieTabs in 'Results" to make them reclickable when removed from nominated list
   useEffect(() => {
     if (!nominated.some(movie => movie.imdbID === imdbID))
     setIsNominated(false)
   }, [nominated])
 
-
   return (
     <Tab>
-      <h5>{Title}</h5>
-      <span>{Year}</span>
+      <span>{Title} ({Year})</span>
       <button
       disabled={isNominated && (action ==='Nominate')}
       onClick={()=> handleClick()}

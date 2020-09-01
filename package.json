@@ -9,6 +9,8 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "dot-env": "0.0.1",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.6.0",

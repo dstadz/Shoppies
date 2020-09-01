@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
-
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { searchTermState, searchResultState } from '../Utils/store'
-
 import { Form } from '../styles/'
-
 
 export const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useRecoilState(searchTermState)
   const setSearchResults = useSetRecoilState(searchResultState)
-
 
   //useeffect will fetch data at every key stroke after third char
   useEffect(() => {
@@ -18,8 +14,6 @@ export const SearchBar = () => {
     .then(res => { setSearchResults(res.data.Search) })
     .catch(err => { console.log(err) })
   },[searchTerm])
-
-
 
   return (
     <Form>
