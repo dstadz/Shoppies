@@ -14,9 +14,16 @@ const Results = () => {
     <Card>
       <h3> Results for "{searchTerm}" </h3>
       {/* initial key stroke will change search results to 'undefined', so AND logic avoids 'cannot map over undefined' error */}
-      <ul> { searchResults && searchResults.map(movie => {
-        return <MovieTab props={{...movie, action:'Nominate'}} key={movie.imdbID}  />
-      } ) } </ul>
+      <ul>
+        { searchResults && searchResults.map(movie => {
+          return (
+            <MovieTab
+              key={movie.imdbID}
+              props={{...movie, action:'Nominate'}}
+            />
+          )
+        })}
+      </ul>
     </Card>
   )
 }

@@ -1,8 +1,9 @@
 import { atom } from 'recoil'
 
+const session = JSON.parse(localStorage.getItem('nominated'))
 export const nominatedState = atom({
   key: 'nominatedState',
-  default: []
+  default: session || []
 })
 
 export const searchTermState = atom({

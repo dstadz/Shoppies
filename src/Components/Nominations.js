@@ -13,9 +13,16 @@ const Nominations = () => {
   return (
     <Card>
       <h3> Nominated </h3>
-      <ul> { nominated.map(movie => { //poulates list with nominated movies
-        return <MovieTab props={{...movie, action:'Remove'}} key={movie.imdbID} />
-      } ) } </ul>
+      <ul>
+        { nominated.map(movie => { //poulates list with nominated movies
+          return (
+            <MovieTab
+              props={{...movie, action:'Remove'}}
+              key={movie.imdbID}
+            />
+          )
+        })}
+      </ul>
     </Card>
   )
 }

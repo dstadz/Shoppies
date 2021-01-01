@@ -4,12 +4,10 @@ import { useRecoilState } from 'recoil'
 import { nominatedState } from '../Utils/store'
 import { Tab } from '../styles/'
 
-const MovieTab = ({props}) => {
+const MovieTab = ({ props }) => {
   const { Title, Year, imdbID, /* Type, Poster,*/ action } = props
   const [nominated, setNominated] = useRecoilState(nominatedState)
-  const [isNominated, setIsNominated] = useState(false)
-
-
+  const [isNominated, setIsNominated] = useState(nominated.some(nom => imdbID === nom.imdbID))
 
   const handleClick = () => {
     //adds Movie to 'Nominated'
@@ -18,6 +16,7 @@ const MovieTab = ({props}) => {
     && !nominated.some(movie => movie.imdbID === imdbID)) { //denies addition if movie already nominated
       setNominated(nominated.concat(props))
       setIsNominated(true)
+
     }
 
     // removes MovieTabs from 'Nominations'
@@ -27,21 +26,21 @@ const MovieTab = ({props}) => {
       setNominated(newList)
     }
   }
+  useEffect(() => localStorage.setItem('nominated', JSON.stringify(nominated)))
 
-  //updates MovieTabs in 'Results" to make them reclickabel whe removed from nominated list
+  //updates MovieTabs in 'Results" to make them reclickable whe removed from nominated list
   useEffect(() => {
     if (!nominated.some(movie => movie.imdbID === imdbID))
     setIsNominated(false)
   }, [nominated])
-
 
   return (
     <Tab>
       <h5>{Title}</h5>
       <span>{Year}</span>
       <button
-      disabled={isNominated && (action ==='Nominate')}
-      onClick={()=> handleClick()}
+        disabled={isNominated && (action==='Nominate')}
+        onClick={()=>handleClick()}
       >{action}</button>
     </Tab>
   )

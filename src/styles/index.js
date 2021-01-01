@@ -6,6 +6,7 @@ export const AppContainer = styled.section`
   text-align: center;
   margin: auto;
   width: 75%;
+  max-width: 900px;
 
   div{
     display: flex;
@@ -15,7 +16,7 @@ export const AppContainer = styled.section`
 `
 
 export const Card = styled.div`
-  width: 300px;
+  width: 49%;
   flex-direction: column;
   border: solid 1px grey;
   align-self: flex-start;
@@ -24,6 +25,8 @@ export const Card = styled.div`
 
 export const Tab = styled.li`
   text-align: top;
+  display: flex;
+  align-items: center;
 
 `
 export const Form = styled.form`
