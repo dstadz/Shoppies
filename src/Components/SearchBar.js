@@ -14,7 +14,7 @@ export const SearchBar = () => {
 
   //useEffect will fetch data at every key stroke after third char
   useEffect(() => {
-    axios.get(`http://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.REACT_APP_OMDB_API}`)
+    axios.get(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${process.env.REACT_APP_OMDB_API}`)
     .then(res => { setSearchResults(res.data.Search) })
     .catch(err => { console.log(err) })
   },[searchTerm])
