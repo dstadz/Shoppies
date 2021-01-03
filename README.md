@@ -1,2 +1,2 @@
 ## App now viewable at:
-https://dstadz.github.io/Shoppies/
+https://hungry-visvesvaraya-e7fc74.netlify.app/
